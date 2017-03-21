@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>当前时间</title>
+</head>
+<style>
+    .clock{
+        width: 200px;
+        height: 200px;
+        border: 3px solid #aaaaaa;
+        box-shadow: 0 0 5px #888;
+        border-radius: 50%;
+        position: fixed;
+        left: 0;right: 0;top: 0;bottom: 0;
+        margin:auto;
+        background: radial-gradient(#fff 40%,#eee 100%);
+    }
+</style>
+<body>
+    <div class="clock">
+
+    </div>
+</body>
+<script>
+    window.onload=function () {
+        var clock=document.querySelector(".clock");
+        createMark();
+        var hours=createP(5,44,"#000",10);
+        var mins=createP(3,66,"#000",40);
+        var secs=createP(2,88,"red",80);
+        var date=new Date();
+        var hour=date.getHours();
+        var min=date.getMinutes();
+        var sec=date.getSeconds();
+        var h=hour*30+Math.round(min*6/12);
+        hours.style.transform="rotate("+h+"deg)";
+        mins.style.transform="rotate("+min*6+"deg)";
+        secs.style.transform="rotate("+sec*6+"deg)";
+        var t=setInterval(function () {
+            var date=new Date();
+            var hour=date.getHours();
+            var min=date.getMinutes();
+            var sec=date.getSeconds();
+            var h=hour*30+Math.round(min*6/12);
+            hours.style.transform="rotate("+h+"deg)";
+            mins.style.transform="rotate("+min*6+"deg)";
+            secs.style.transform="rotate("+sec*6+"deg)";
+        },1000);
+        function createMark() {
+            var width,height;
+            for(var i=0;i<60;i++){
+                if(i%5==0){
+                    width=4;
+                    height=8;
+                    var divs=document.createElement("div");
+                    var ss=i/5;
+                    if(ss==0){
+                        ss=12;
+                    }
+                    divs.innerHTML="<div style='transform:rotate("+(-6*i)+"deg)'>"+ss+"</div>";
+                    divs.style.cssText="width:"+20+"px;height:"+10+"px;position:absolute;left:"+90+"px;top:7px";
+                    divs.style.transformOrigin="center 93px";
+                    divs.style.transform="rotate("+6*i+"deg)";
+                    divs.style.textAlign="center";
+                    clock.appendChild(divs);
+                }else{
+                    width=2;
+                    height=4;
+                }
+                var div=document.createElement("div");
+
+                div.style.cssText="width:"+width+"px;height:"+height+"px;position:absolute;left:"+(200-width)/2+"px;top:0;background:#000";
+                div.style.transform="rotate("+6*i+"deg)";
+                div.style.transformOrigin="center 100px";
+
+                clock.appendChild(div);
+            }
+        }
+        function  createP(w,h,b,a) {
+            var div=document.createElement("div");
+            var lefts=(200-w)/2+"px";
+            var tops=200/2-h+10+"px";
+            div.style.cssText="width:"+w+"px;height:"+h+"px;background:"+b+";position:absolute;left:"+lefts+";top:"+tops;
+            var bottom=h-10+"px";
+            div.style.transformOrigin="center "+bottom;
+            div.style.borderRadius="1px 1px 5px 5px";
+            clock.appendChild(div);
+            return div;
+        }
+    }
+</script>
+</html>

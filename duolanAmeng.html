@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .duo{
+        width: 200px;
+        position: fixed;
+        left:0;
+        top:0;
+        right:0;
+        bottom: 0;
+        margin: auto;
+    }
+    .head{
+        width: 100px;
+        height: 100px;
+        border:1px solid #333333;
+        background:radial-gradient(circle 50px at 90px 10px,#80DDF4 ,#0EABD4);
+        border-radius: 50%;
+        box-shadow: -2px 2px 4px #999999,2px -2px 5px #0A6E88 inset;
+        position: relative;
+
+    }
+    .face{
+        width: 80px;
+        height: 70px;
+        border-radius: 50%;
+        border: 1px solid #333333;
+        background: #fff;
+        position: absolute;
+        bottom: 2px;
+        left:10px;
+        z-index: 4;
+    }
+    .lefteye{
+        width: 25px;
+        height: 28px;
+        border: 1px solid #333333;
+        background: #fff;
+        border-radius: 20px;
+        position: absolute;
+        right: 40px;
+        top: -13px;
+     }
+    .lefteye .yanqiu{
+        width: 5px;
+        height: 5px;
+        background: #333333;
+        border-radius: 50%;
+        position: absolute;
+        right: 5px;
+        bottom: 6px;
+    }
+    .righteye .yanqiu{
+        width: 5px;
+        height: 5px;
+        background: #333333;
+        border-radius: 50%;
+        position: absolute;
+        left: 5px;
+        bottom: 6px;
+    }
+    .righteye{
+        width: 25px;
+        height: 28px;
+        border: 1px solid #333333;
+        background: #fff;
+        border-radius: 20px;
+        position: absolute;
+        left: 40px;
+        top: -13px;
+    }
+    .bizhi{
+        width: 10px;
+        height: 10px;
+        border: 1px solid #333333;
+        background:radial-gradient(circle 2px at 7px 3px,#fff ,#C93E00);
+        border-radius: 50%;
+        position: absolute;
+        left: 34px;
+        top: 10px;
+        z-index: 2;
+    }
+    .zuiba{
+        width: 1.5px;
+        height: 35px;
+        background: #333333;
+        position: absolute;
+        left: 39px;
+        top: 15px;
+    }
+    .dazuiba{
+        width: 50px;
+        height: 20px;
+        border-bottom: 1px solid #333333;
+        border-radius: 50%;
+        position: absolute;
+        left: 15px;
+        top: 30px;
+    }
+    /*胡子*/
+    div.lefthuzi{
+        position: absolute;
+        right: 57px;
+        top: 32px;
+    }
+    div.lefthuzi div{
+        width: 15px;
+        height: 1px;
+        background: #333333;
+    }
+    div.lefthuzi div.lefthuzi1{
+        transform-origin: right center;
+        transform:translate(0,5px) rotate(-16deg);
+    }
+    div.lefthuzi div.lefthuzi3{
+        transform-origin: right center;
+        transform:translate(0,-5px) rotate(16deg);
+    }
+    div.righthuzi{
+        position: absolute;
+        left: 57px;
+        top: 32px;
+    }
+    div.righthuzi div{
+        width: 15px;
+        height: 1px;
+        background: #333333;
+    }
+    div.righthuzi div.righthuzi1{
+        transform-origin:left center ;
+        transform:translate(0,5px) rotate(16deg);
+    }
+    div.righthuzi div.righthuzi3{
+        transform-origin:left center ;
+        transform:translate(0,-5px) rotate(-16deg);
+    }
+    /*围巾*/
+    div.weijin{
+        position: absolute;
+        z-index: 5;
+        width: 70px;
+        height: 5px;
+        border: 0.8px solid #333;
+        border-radius: 5px;
+        background: linear-gradient(#C83F00,#8A0C00);
+        left: 15px;
+        top: 90px;
+    }
+    div.lingd{
+        width: 11px;height: 11px;border-radius: 50%;
+        border: 0.8px solid #000;
+        box-shadow: -.5px .5px 1px #777;
+        position: absolute;
+        background: radial-gradient(circle 2px at 8px 2px,#fff,#E9E11A);
+        z-index: 3;
+        left: 29px;
+        top:2px;
+    }
+    div.lingd div.henxian{
+        width: 10px;
+        height: 1px;
+        background: transparent;
+        border: 0.8px solid rgba(0,0,0,0.7);
+        position: absolute;
+        left: 0px;
+        top: 2px;
+    }
+    div.lingd div.quan{
+        width:5px;
+        height: 4px;
+        border-radius: 50%;
+        background: #000;
+        position: absolute;
+        left: 3px;
+        top: 5px;
+    }
+    div.lingd div.xian{
+        width: 1px;
+        height: 5px;
+        background: #000000;
+        position: absolute;
+        left: 5px;
+        top: 6px;
+    }
+    /*胳膊*/
+    .geboleft{
+          position: absolute;
+          left: 0px;
+          top: 100px;
+      }
+    .geboleft div.left{
+        width: 30px;
+        height: 14px;
+        background: #0083A6;
+        border: 0.8px solid #333;
+        transform: rotate(-45deg);
+    }
+    .geboleft div.shou{
+        position: absolute;
+        z-index: 3;
+        left: -5px;
+        top: 5px;
+        width: 20px;
+        height: 20px;
+        border: 0.8px solid #333333;
+        background: #fff;
+        border-radius: 9px;
+    }
+    .geboright{
+        position: absolute;
+        left: 70px;
+        top: 100px;
+    }
+    .geboright div.right{
+        width: 30px;
+        height: 14px;
+        background: #07BCE9;
+        border: 0.8px solid #333;
+        transform: rotate(45deg);
+    }
+    .geboright div.shou{
+        position: absolute;
+        z-index: 3;
+        right: -5px;
+        top: 5px;
+        width: 20px;
+        height: 20px;
+        border: 0.8px solid #333333;
+        background: #fff;
+        border-radius: 9px;
+    }
+    div.shenti{
+        position: absolute;
+        left:18px;
+        top: 95px;
+        width: 64px;
+        height: 50px;
+        border-bottom: 0.8px solid #333;
+        border-left:0.8px solid #333;
+
+        border-right:  0.8px solid #333;
+        z-index: 4;
+        background: linear-gradient(to right,#0087AC,#07BCE9);
+    }
+    div.shenti div.koushui{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border:1px solid #333;
+        position: absolute;
+        left: 12px;
+        top: -4px;
+        background: linear-gradient(to right,#D3D3D3 10%,#fff);
+    }
+    div.shenti div.koushui div.koujin{
+        margin: auto;
+        margin-top: 18px;
+        width: 30px;
+        background: transparent;
+        padding-bottom: 15px;
+        border-radius: 0 0 15px 15px;
+        border:1px solid #333;
+    }
+    div.foot1{
+        width: 36px;
+        height: 10px;
+        border: 1px solid #333333;
+        background: linear-gradient(to right,#B5B5B5 1%,#fff);
+        position: absolute;
+        left: 13px;
+        border-radius: 8px 5px 5px 5px;
+        top: 140px;
+        z-index: 8;
+    }
+    div.foot2{
+        width: 36px;
+        height: 10px;
+        border: 1px solid #333333;
+        background: linear-gradient(to right,#B5B5B5 1%,#fff);
+        position: absolute;
+        left: 55px;
+        border-radius: 5px 8px 5px 5px;
+        top: 140px;
+        z-index: 8;
+    }
+</style>
+<body>
+    <div class="duo">
+        <div class="head">
+            <div class="face">
+                <div class="lefteye">
+                    <div class="yanqiu"></div>
+                </div>
+                <div class="righteye">
+                    <div class="yanqiu"></div>
+                </div>
+                <div class="bizhi">
+                </div>
+                <div class="zuiba">
+
+                </div>
+                <div class="dazuiba"></div>
+                <div class="lefthuzi">
+                    <div class="lefthuzi1"></div>
+                    <div class="lefthuzi2"></div>
+                    <div class="lefthuzi3"></div>
+                </div>
+                <div class="righthuzi">
+                    <div class="righthuzi1"></div>
+                    <div class="righthuzi2"></div>
+                    <div class="righthuzi3"></div>
+                </div>
+            </div>
+        </div>
+        <div class="weijin">
+            <div class="lingd">
+                <div class="henxian"></div>
+                <div class="quan"></div>
+                <div class="xian"></div>
+            </div>
+        </div>
+        <div class="geboleft">
+            <div class="left"></div>
+            <div class="shou"></div>
+        </div>
+        <div class="shenti">
+            <div class="koushui">
+                <div class="koujinzhe"></div>
+                <div class="koujin"></div>
+            </div>
+        </div>
+        <div class="geboright">
+            <div class="right"></div>
+            <div class="shou"></div>
+        </div>
+        <div class="foot1">
+
+    </div>
+        <div class="foot2">
+
+        </div>
+    </div>
+</body>
+</html>
